@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f2027;
+            background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            width: 420px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            color: white;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus {
+            box-shadow: 0 0 10px #00f2fe;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 114, 255, 0.4);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(0, 255, 150, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                width: 90%;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>🏡 House Price Prediction</h2>
+
+        <form action="/predict" method="post">
+
+            <div class="input-box">
+                <label>Area (sq ft)</label>
+                <input type="number" name="area" placeholder="Enter area" required>
+            </div>
+
+            <div class="input-box">
+                <label>Bedrooms</label>
+                <input type="number" name="bedrooms" placeholder="Enter bedrooms" required>
+            </div>
+
+            <div class="input-box">
+                <label>Bathrooms</label>
+                <input type="number" name="bathrooms" placeholder="Enter bathrooms" required>
+            </div>
+
+            <button type="submit">Predict Price</button>
+        </form>
+
+
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+        
+    </div>
+
+</body>
+</html>
